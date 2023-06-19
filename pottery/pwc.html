@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="mainFormats">
+
+<h2>Plaster Weight Calculator</h2>
+<i>(Enter dimmensions in cm.)</i>
+<br>
+<hr>
+
+<p>
+Outer:
+<select id="outer" onchange="oSelectValue(this.value)">
+  <option value="hemisphere">Hemisphere</option>
+  <option value="cylinder" selected="selected">Cylinder</option> 
+  <option value="frustrum">Frustrum</option>
+  <option value="cuboid">Cuboid</option>
+</select>
+</p>
+
+<p>
+<p id="ho" class="hidden">Diameter: <input id="hodiameter" size="1"></p>
+<p id="co" class="shown">Diameter: <input id="codiameter" size="1">&nbsp;&nbsp;Height: <input id="coheight" size="1"></p>
+<p id="fo" class="hidden">Diameters (Large/Small): <input id="foldiameter" size="1">&nbsp;&nbsp;<input id="fosdiameter" size="1">&nbsp;&nbsp;Height: <input id="foheight" size="1"></p>
+<p id="uo" class="hidden">Lengths 1: <input id="colength1" size="1">&nbsp;&nbsp;2: <input id="colength2" size="1">&nbsp;&nbsp;3: <input id="colength3" size="1"></p>
+</p>
+
+Outer Volume (cm3): <label id="v_o" class="resultFormats">0</label><br>
+
+<hr>
+
+<p>
+Inner:
+<select id="inner" onchange="iSelectValue(this.value)">
+  <option value="hemisphere" selected="selected">Hemisphere</option>
+  <option value="cylinder">Cylinder</option> 
+  <option value="frustrum">Frustrum</option>
+  <option value="cuboid">Cuboid</option>
+ </select>
+</p>
+
+<p>
+<p id="hi" class="shown">Diameter: <input id="hidiameter" size="1"></p>
+<p id="ci" class="hidden">Diameter: <input id="cidiameter" size="1">&nbsp;&nbsp;Height: <input id="ciheight" size="1"></p>
+<p id="fi" class="hidden">Diameters (Large/Small): <input id="fildiameter" size="1">&nbsp;&nbsp;<input id="fisdiameter" size="1">&nbsp;&nbsp;Height: <input id="fiheight" size="1"></p>
+<p id="ui" class="hidden">Lengths 1: <input id="cilength1" size="1">&nbsp;&nbsp;2: <input id="cilength2" size="1">&nbsp;&nbsp;3: <input id="cilength3" size="1"></p>
+</p>
+
+Inner Volume (cm3): <label id="v_i" class="resultFormats">0</label><br>
+
+<hr>
+
+<p>
+<button type="button" onclick="calculatePlaster()" align="center">Calculate</button>
+</p>
+
+<p>
+Volume (cm3): <label id="v" class="resultFormats">0</label>
+</p>
+
+<p>
+Water (ml): <label id="w" class="resultFormats">0</label>
+</p>
+
+<p>
+Plaster (g): <label id="p" class="resultFormats">0</label>
+</p>
+<br><br>
+
+</div>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>

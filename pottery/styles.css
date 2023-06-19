@@ -1,0 +1,34 @@
+body {
+  background-color: #f2f2f2;
+}
+
+.mainFormats {
+  text-align: center;
+  font-family: arial;
+  font-size: 14px;
+}
+
+.resultFormats {
+  font-weight: bold;
+}
+
+.constantsFormats {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+hr { 
+  display: block;
+  width:20em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-style: inset;
+}
