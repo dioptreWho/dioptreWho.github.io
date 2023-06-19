@@ -11,24 +11,28 @@ function oSelectValue(selection) {
       document.getElementById("ho").style.display = "block";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "none";
+      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "cylinder":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "block";
       document.getElementById("fo").style.display = "none";
+      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "frustrum":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "block";
+      document.getElementById("foh").style.display = "block";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "cuboid":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "none";
+      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "block";
       break;
   }
@@ -44,24 +48,28 @@ function iSelectValue(selection) {
       document.getElementById("hi").style.display = "block";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "none";
+      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "cylinder":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "block";
       document.getElementById("fi").style.display = "none";
+      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "frustrum":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "block";
+      document.getElementById("fih").style.display = "block";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "cuboid":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "none";
+      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "block";
       break;
   }
