@@ -2,6 +2,8 @@
 var outer = "cylinder";
 var inner = "hemisphere";
 
+document.getElementById("warnings").style.display = "none";
+
 // Gets and sets the radio selection value
 function oSelectValue(selection) {
   outer = selection;
@@ -139,7 +141,9 @@ function calculatePlaster() {
   p = w * 1.3;
   
   if(v < 0){
-	  document.getElementById("warnings").innerHTML = "Warning: input values don't appear correct.";
+	  document.getElementById("warnings").style.display = "block";
+  } else {
+ 	  document.getElementById("warnings").style.display = "none";
   }
 
   document.getElementById("v_o").innerHTML = v_o.toFixed();
