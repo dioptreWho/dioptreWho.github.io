@@ -137,6 +137,10 @@ function calculatePlaster() {
   v = v_o - v_i;
   w = v / 1.5;
   p = w * 1.3;
+  
+  if(v < 0){
+	  document.getElementById("warnings").innerHTML = "Warning: input values don't appear correct.";
+  }
 
   document.getElementById("v_o").innerHTML = v_o.toFixed();
   document.getElementById("v_i").innerHTML = v_i.toFixed();
