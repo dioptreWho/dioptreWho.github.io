@@ -27,8 +27,7 @@ Outer:
 <p>
 <p id="ho" class="hidden">Diameter: <input id="hodiameter" size="1"></p>
 <p id="co" class="shown">Diameter: <input id="codiameter" size="1">&nbsp;&nbsp;Height: <input id="coheight" size="1"></p>
-<p id="fo" class="hidden">Diameters (Large/Small): <input id="foldiameter" size="1">&nbsp;&nbsp;<input id="fosdiameter" size="1"></p>
-<p id="foh" class="hidden">Height: <input id="foheight" size="1"></p>
+<p id="fo" class="hidden">Diameters: <input id="foldiameter" size="1">&nbsp;&nbsp;<input id="fosdiameter" size="1">&nbsp;&nbsp;Height: <input id="foheight" size="1"></p>
 <p id="uo" class="hidden">Lengths 1: <input id="colength1" size="1">&nbsp;&nbsp;2: <input id="colength2" size="1">&nbsp;&nbsp;3: <input id="colength3" size="1"></p>
 </p>
 
@@ -49,8 +48,7 @@ Inner:
 <p>
 <p id="hi" class="shown">Diameter: <input id="hidiameter" size="1"></p>
 <p id="ci" class="hidden">Diameter: <input id="cidiameter" size="1">&nbsp;&nbsp;Height: <input id="ciheight" size="1"></p>
-<p id="fi" class="hidden">Diameters (Large/Small): <input id="fildiameter" size="1">&nbsp;&nbsp;<input id="fisdiameter" size="1"></p>
-<p id="fih" class="hidden">Height: <input id="fiheight" size="1"></p>
+<p id="fi" class="hidden">Diameters: <input id="fildiameter" size="1">&nbsp;&nbsp;<input id="fisdiameter" size="1">&nbsp;&nbsp;Height: <input id="fiheight" size="1"></p>
 <p id="ui" class="hidden">Lengths 1: <input id="cilength1" size="1">&nbsp;&nbsp;2: <input id="cilength2" size="1">&nbsp;&nbsp;3: <input id="cilength3" size="1"></p>
 </p>
 
@@ -96,28 +94,24 @@ function oSelectValue(selection) {
       document.getElementById("ho").style.display = "block";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "none";
-      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "cylinder":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "block";
       document.getElementById("fo").style.display = "none";
-      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "frustrum":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "block";
-      document.getElementById("foh").style.display = "block";	  
       document.getElementById("uo").style.display = "none";
       break;
     case "cuboid":
       document.getElementById("ho").style.display = "none";
       document.getElementById("co").style.display = "none";
       document.getElementById("fo").style.display = "none";
-      document.getElementById("foh").style.display = "none";	  
       document.getElementById("uo").style.display = "block";
       break;
   }
@@ -133,28 +127,24 @@ function iSelectValue(selection) {
       document.getElementById("hi").style.display = "block";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "none";
-      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "cylinder":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "block";
       document.getElementById("fi").style.display = "none";
-      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "frustrum":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "block";
-      document.getElementById("fih").style.display = "block";	  
       document.getElementById("ui").style.display = "none";
       break;
     case "cuboid":
       document.getElementById("hi").style.display = "none";
       document.getElementById("ci").style.display = "none";
       document.getElementById("fi").style.display = "none";
-      document.getElementById("fih").style.display = "none";	  
       document.getElementById("ui").style.display = "block";
       break;
   }
@@ -170,8 +160,8 @@ function calculatePlaster() {
   let hor = document.getElementById("hodiameter").value/2;
   let cor = document.getElementById("codiameter").value/2;
   let coh = document.getElementById("coheight").value;
-  let foor = document.getElementById("foldiameter").value/2;
-  let foir = document.getElementById("fosdiameter").value/2;
+  let folr = document.getElementById("foldiameter").value/2;
+  let fosr = document.getElementById("fosdiameter").value/2;
   let foh = document.getElementById("foheight").value;
   let col1 = document.getElementById("colength1").value;
   let col2 = document.getElementById("colength1").value;
@@ -181,14 +171,14 @@ function calculatePlaster() {
   let hir = document.getElementById("hidiameter").value/2;
   let cir = document.getElementById("cidiameter").value/2;
   let cih = document.getElementById("ciheight").value;
-  let fiR = document.getElementById("fildiameter").value/2;
-  let fir = document.getElementById("fisdiameter").value/2;
+  let filr = document.getElementById("fildiameter").value/2;
+  let fisr = document.getElementById("fisdiameter").value/2;
   let fih = document.getElementById("fiheight").value;
   let cil1 = document.getElementById("cilength1").value;
   let cil2 = document.getElementById("cilength1").value;
   let cil3 = document.getElementById("cilength1").value;
 
-
+  // Do calculation for the outer volume
   switch(outer) {
     case "hemisphere":
       v_o = 2/3 * pi * hor**3;
@@ -197,13 +187,14 @@ function calculatePlaster() {
       v_o = pi * cor**2 * coh;
       break;
     case "frustrum":
-      v_o = 1/3 * pi * foh * (foor**2 + foir**2 + foor * foir);
+      v_o = 1/3 * pi * foh * (folr**2 + fosr**2 + folr * fosr);
       break;
     case "cuboid":
       v_o = col1 * col2 * col3;
       break;
    }
 
+  // Do calculation for the inner volume
   switch(inner) {
     case "hemisphere":
       v_i = 2/3 * pi * hir**3;
@@ -212,7 +203,7 @@ function calculatePlaster() {
       v_i = pi * cir**2 * cih;
       break;
     case "frustrum":
-      v_i = 1/3 * pi * fih * (fiR**2 + fir**2 + fiR * fir);
+      v_i = 1/3 * pi * fih * (filr**2 + fisr**2 + filr * fisr);
       break;
     case "cuboid":
       v_i = cil1 * cil2 * cil3;
