@@ -4,46 +4,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="mainFormats">
 
 <h2>Clay Weight Calculator</h2>
 
-<p>
-<input type="radio" name="artefact" onclick="radioValue(this.value)" value="pot">Pot/Mug
-<input type="radio" name="artefact" onclick="radioValue(this.value)" value="bowl">Bowl
-<input type="radio" name="artefact" onclick="radioValue(this.value)" value="vase" checked="checked">Vase/Plate
-<input type="radio" name="artefact" onclick="radioValue(this.value)" value="handle">Handle
-</p>
+<select id="artefact" onchange="SelectValue(this.value)">
+  <option value="pot">Pot/Mug</option>
+  <option value="bowl">Bowl</option> 
+  <option value="vase" selected="selected">Vase</option>
+  <option value="plate">Plate</option>  
+  <option value="handle">Handle</option>
+</select>
 
 <p>
 <img src="vase.png" alt="artefact" height="100" id="image">
 </p>
-<br>
-
+<hr>
 <p>
-<b>Dimmensions (mm)</b><br>
-<p>Height (or Length for handles): <input id="height" size="1" ></p>
-<p>&nbsp;&nbsp;Width &nbsp;&nbsp;&nbsp;&nbsp; | Top: <input id="widthTop" size="1" > &nbsp;&nbsp; <label id="bottomd">Bottom:</label> <input id="widthBottom" size="1" ></p>
-<p>Thickness | Side: <input id="thicknessWalls" size="1" > &nbsp; <label id="bottomt">Bottom:</label> <input id="thicknessBottom" size="1"></p>
+<b>Dimmensions (cm)</b><br>
+<p>Height (or Length for handles): <input id="height" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Width |&nbsp; Top: <input id="widthTop" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');">&nbsp;&nbsp; 
+Bottom: <input id="widthBottom" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"></p>
+<p>Thickness | Side: <input id="thicknessWalls" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"> &nbsp; 
+Bottom: <input id="thicknessBottom" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"></p>
 </p>
-<br>
-
+<hr>
 <p>
 <b>Waste (%) </b><br>
-<p>Throwing: <input id="wasteThrowing" size="1" > &nbsp; Trimming: <input id="wasteTrimming" size="1" ></p>
+<p>Throwing: <input id="wasteThrowing" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');">&nbsp; 
+Trimming: <input id="wasteTrimming" size="1" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"></p>
 </p>
-<br>
-
+<hr>
 <p>
-<button type="button" onclick="populateValues()" align="center">Populate</button>
 <button type="button" onclick="calculateWeight()" align="center">Calculate</button>
 </p>
 
 <p>
-Clay weight: <label id="result" class="resultFormats">0</label>g
+Clay weight (g): <label id="result" class="resultFormats">0</label>
 </p>
+
+<p id="warnings" class="warningFormats">Warning: input value(s) may not be correct.</p>
 <br><br>
 
 <div class="constantsFormats">
@@ -56,54 +59,49 @@ Clay weight: <label id="result" class="resultFormats">0</label>g
 
 <script>
 
-var artefact = "pot" //Set the default value to pot
+// Set the default value
+var artefact = "vase";
+
+document.getElementById("warnings").style.display = "none";
 
 // Gets and sets the radio selection value
-function radioValue(selection) {
+function SelectValue(selection) {
+
   artefact = selection;
 
   // Set the image based on the selection
   switch(selection) {
     case "pot":
       document.getElementById("image").src = "pot.png";
-      document.getElementById("widthBottom").style.visibility = "hidden";
-      document.getElementById("bottomd").style.visibility = "hidden";
-      document.getElementById("thicknessBottom").style.visibility = "visible";
-      document.getElementById("bottomt").style.visibility = "visible";
+	  document.getElementById("height").disabled = false;	  
+	  document.getElementById("widthBottom").disabled = true;
+	  document.getElementById("thicknessBottom").disabled = true;	  
       break;
     case "bowl":
       document.getElementById("image").src = "bowl.png";
-      document.getElementById("widthBottom").style.visibility = "hidden";
-      document.getElementById("bottomd").style.visibility = "hidden";
-      document.getElementById("thicknessBottom").style.visibility = "hidden";
-      document.getElementById("bottomt").style.visibility = "hidden";
+	  document.getElementById("height").disabled = false;	  
+	  document.getElementById("widthBottom").disabled = true;
+	  document.getElementById("thicknessBottom").disabled = true;	
       break;
     case "vase":
       document.getElementById("image").src = "vase.png";
-      document.getElementById("widthBottom").style.visibility = "visible";
-      document.getElementById("bottomd").style.visibility = "visible";
-      document.getElementById("thicknessBottom").style.visibility = "visible";
-      document.getElementById("bottomt").style.visibility = "visible";
+	  document.getElementById("height").disabled = false;	  
+	  document.getElementById("widthBottom").disabled = false;
+	  document.getElementById("thicknessBottom").disabled = false;	
       break;
+    case "plate":
+      document.getElementById("image").src = "vase.png";
+	  document.getElementById("height").disabled = true;	  
+	  document.getElementById("widthBottom").disabled = true;
+	  document.getElementById("thicknessBottom").disabled = true;	
+      break;	  
     case "handle":
       document.getElementById("image").src = "handle.png";
-      document.getElementById("widthBottom").style.visibility = "hidden";
-      document.getElementById("bottomd").style.visibility = "hidden";
-      document.getElementById("thicknessBottom").style.visibility = "hidden";
-      document.getElementById("bottomt").style.visibility = "hidden";
+	  document.getElementById("height").disabled = false;	  
+	  document.getElementById("widthBottom").disabled = true;
+	  document.getElementById("thicknessBottom").disabled = true;	
       break;
   }
-}
-
-// Populate the values to make it easier
-function populateValues() {
-  document.getElementById("height").value = 100
-  document.getElementById("widthTop").value = 100
-  document.getElementById("widthBottom").value = 100
-  document.getElementById("thicknessWalls").value = 5
-  document.getElementById("thicknessBottom").value = 5
-  document.getElementById("wasteThrowing").value = 5
-  document.getElementById("wasteTrimming").value = 5
 }
 
 // Do all the calculations to determine the weight
@@ -112,20 +110,26 @@ function calculateWeight() {
   const d = 492.8; //1g of clay is 492.8mm cubed
   const s = 0.114; //shrinkage percentage from wet to fired
 
-  // Get the user inputs
-  let h = document.getElementById("height").value;
-  let r = document.getElementById("widthTop").value/2;
-  let ri //inner radius for the top
-  let R = document.getElementById("widthBottom").value/2;
-  let Ri //inner radius for the bottom
-  let tw = document.getElementById("thicknessWalls").value;
-  let tb = document.getElementById("thicknessBottom").value;
-  let th = document.getElementById("wasteThrowing").value/100;
-  let tr = document.getElementById("wasteTrimming").value/100;
+  // Get the user inputs and convert to mm
+  let h = Number(document.getElementById("height").value)*10;
+  let r = Number(document.getElementById("widthTop").value)*10/2;
+  let ri; //inner radius for the top
+  let R = Number(document.getElementById("widthBottom").value)*10/2;
+  let Ri; //inner radius for the bottom
+  let tw = Number(document.getElementById("thicknessWalls").value)*10;
+  let tb = Number(document.getElementById("thicknessBottom").value)*10;
+  let th = Number(document.getElementById("wasteThrowing").value)/100;
+  let tr = Number(document.getElementById("wasteTrimming").value)/100;
+
+  if(tw > r || tb > h){
+	  document.getElementById("warnings").style.display = "block";
+  } else {
+ 	  document.getElementById("warnings").style.display = "none";
+  }
 
   // Calculate the final volumes based on user choice
   switch(artefact) {
-    case "pot":
+   case "pot":
       v_o = pi * r**2 * h;
       v_i = pi * (r-tw)**2 * (h-tb);
       v = v_o - v_i;
@@ -144,12 +148,10 @@ function calculateWeight() {
       v = v_o - v_i;
       break;
     case "plate":
-
-      v = r*2 * h * t;
-
+      v = pi * r**2 * tw;
       break;
     case "handle":
-      v = r*2 * h * t;
+      v = r*2 * h * tw;
       break;
   }
 
