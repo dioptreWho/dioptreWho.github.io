@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="..\style.css">
+</head>
+
+<body>
+
+<div class="mainFormats">
+
+<h2>Kiln Control</h2>
+
+<select id="programs" onchange="SelectValue(this.value)">
+  <option value="bisque" selected="selected">Bisque</option>
+  <option value="glost">Glost</option> 
+  <option value="midfire">Mid-Fire</option>
+  <option value="help">Help!</option>  
+ </select>
+
+<p>
+<img src="bisque.png" alt="program" height="250" id="image">
+</p>
+<hr>
+<p>
+<b>Run Instructions</b><br>
+<div class="outer">
+	<div class="inner">
+<ol>
+  <li>Switch toggle to "on".</li>
+  <li>Press SET button.</li>
+  <li>Press Shift button.</li>
+  <li>etc...</li>
+</ol>
+</div>
+</div>
+</p>
+<hr>
+
+</div>
+
+<script>
+
+// Set the default value
+var program = "bisque";
+
+// Gets and sets the radio selection value
+function SelectValue(selection) {
+
+  program = selection;
+
+  // Set the image based on the selection
+  switch(selection) {
+    case "bisque":
+      document.getElementById("image").src = "bisque.png";
+      break;
+    case "glost":
+      document.getElementById("image").src = "glost.png";
+      break;
+    case "midfire":
+      document.getElementById("image").src = "midfire.png";
+      break;
+  }
+}
+
+</script>
+
+</body>
+</html>
