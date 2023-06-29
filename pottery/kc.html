@@ -13,9 +13,9 @@
 
 <select id="programs" onchange="SelectValue(this.value)">
   <option value="powerup" selected="selected">Power Up</option>
-  <option value="bisque">Bisque</option>
-  <option value="glost">Glost</option> 
-  <option value="midfire">Mid-Fire</option>
+  <option value="bisque">Ptn1: Bisque</option>
+  <option value="glost">Ptn2: Glost</option> 
+  <option value="midfire">Ptn3: Mid-Fire</option>
   <option value="keyOps">Key Operations</option>  
  </select>
 
@@ -139,7 +139,6 @@ function SelectValue(selection) {
       document.getElementById("help").style.display = "none"; 	  
       break;
     case "keyOps":
-      document.getElementById("image").src = "help.png";
       document.getElementById("powerUpDisplay").style.display = "none";	  
       document.getElementById("runInstructions").style.display = "none";
       document.getElementById("help").style.display = "block"; 	  
