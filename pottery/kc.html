@@ -12,29 +12,52 @@
 <h2>Kiln Control</h2>
 
 <select id="programs" onchange="SelectValue(this.value)">
-  <option value="bisque" selected="selected">Bisque</option>
+  <option value="powerup" selected="selected">Power Up</option>
+  <option value="bisque">Bisque</option>
   <option value="glost">Glost</option> 
   <option value="midfire">Mid-Fire</option>
   <option value="help">Help!</option>  
  </select>
 
-<p>
-<img src="bisque.png" alt="program" height="250" id="image">
-</p>
+<p><img src="powerup.png" alt="program" height="250" id="image"></p>
 <hr>
-<p>
-<b>Run Instructions</b><br>
-<div class="outer">
-	<div class="inner">
-<ol>
-  <li>Switch toggle to "on".</li>
-  <li>Press SET button.</li>
-  <li>Press Shift button.</li>
-  <li>etc...</li>
-</ol>
+
+<div id="powerUpDisplay" class="shown">
+	<b>Power Up Display Sequence</b><br>
+	<div class="outer">
+		<div class="inner">
+			<ol>
+			  <li>Set toggle switch to "ON".</li>
+			  <li>All LED and 7 segments displays will be lighted.</li>
+			  <li>Display input type is shown.</li>
+			  <li>Display range is shown.</li>
+			  <li>Ready for use.</li>
+			</ol>
+			
+			<p>The Home Screen will display at the end of the start-up sequence. This screen can be reached from any
+			programming menu by pressing the A/M key twice. The	controller will also revert to the home screen if no key is
+			pressed for 60 seconds.</p>
+			<p><i>NOTE: The A/M key should be held for 2 seconds each time	it is pressed.</i></p>
+		</div>
+	</div>
 </div>
+
+<div id="runInstructions" class="hidden">
+	<b>Run Instructions</b><br>
+	<div class="outer">
+		<div class="inner">
+			<ol>
+			  <li>Follow the Power Up sequence.</li>
+			  <li>Press <span class="controllerButton">&nbsp;SET&nbsp;</span> repeatedly until ‘Ptn’ displays on the PV screen.</li>
+			  <li>Press <span class="controllerButton">&nbsp;&nbsp;&lt;&nbsp;&nbsp;</span>.The green digit in the SV display starts to blink.</li>
+			  <li>Press <span class="controllerButton">&nbsp;&nbsp;&and;&nbsp;&nbsp;</span> or <span class="controllerButton">&nbsp;&nbsp;&or;&nbsp;&nbsp;</span> to change the pattern number.</li>
+			  <li>Press <span class="controllerButton">&nbsp;SET&nbsp;</span> to set the number. The SV value will stop flashing.</li>
+			  <li>Press <span class="controllerButton">&nbsp;&nbsp;&and;&nbsp;&nbsp;</span> to run the program.</li>  
+			</ol>
+		</div>
+	</div>
 </div>
-</p>
+
 <hr>
 
 </div>
@@ -42,7 +65,7 @@
 <script>
 
 // Set the default value
-var program = "bisque";
+var program = "powerup";
 
 // Gets and sets the radio selection value
 function SelectValue(selection) {
@@ -51,14 +74,25 @@ function SelectValue(selection) {
 
   // Set the image based on the selection
   switch(selection) {
-    case "bisque":
+ 	case "powerup":
+      document.getElementById("image").src = "powerup.png";
+      document.getElementById("powerUpDisplay").style.display = "block";	  
+      document.getElementById("runInstructions").style.display = "none";
+      break;
+	case "bisque":
       document.getElementById("image").src = "bisque.png";
+      document.getElementById("powerUpDisplay").style.display = "none";	  
+      document.getElementById("runInstructions").style.display = "block";   
       break;
     case "glost":
       document.getElementById("image").src = "glost.png";
+      document.getElementById("powerUpDisplay").style.display = "none";	  
+      document.getElementById("runInstructions").style.display = "block";	 	  
       break;
     case "midfire":
       document.getElementById("image").src = "midfire.png";
+      document.getElementById("powerUpDisplay").style.display = "none";	  
+      document.getElementById("runInstructions").style.display = "block"; 	  	  
       break;
   }
 }
