@@ -16,7 +16,8 @@
   <option value="bisque">Ptn1: Bisque</option>
   <option value="glost">Ptn2: Glost</option> 
   <option value="midfire">Ptn3: Mid-Fire</option>
-  <option value="keyOps">Key Operations</option>  
+  <option value="keyOps">Key Operations</option> 
+  <option value="interface">Interface Ref.</option>    
  </select>
 
 <hr>
@@ -26,11 +27,17 @@
 	<div class="outer">
 		<div class="inner">
 			<ol>
+			  <li>Close kiln door and check bungs.</li>
 			  <li>Set toggle switch to "ON".</li>
-			  <li>All LED and 7 segments displays will be lighted.</li>
-			  <li>Display input type is shown.</li>
-			  <li>Display range is shown.</li>
+				<ul>
+				  <li>All LED and 7 segments displays will briefly light up.</li>
+				  <li>Next the display input type is shown.</li>
+				  <li>Then the display range is shown.</li>
+				</ul>			  
 			  <li>Ready for use.</li>
+				<ul>
+				  <li>The current kiln temperature is shown.</li>
+				</ul>
 			</ol>
 			
 			<p>The Home Screen will display at the end of the start-up sequence. This screen can be reached from any
@@ -63,6 +70,8 @@
 	<b>Key Operations</b><br><br>
 	<div class="outer">
 		<div class="inner">
+			<p>The Home Screen can be reached from any programming menu by pressing the A/M key twice. The	controller will also revert to the home screen if no key is pressed for 60 seconds.</p>
+			<p><i>NOTE: The A/M key should be held for 2 seconds each time	it is pressed.</i></p>		
 			<table>
 			  <tr>
 				  <th>Ops</th>
@@ -77,6 +86,12 @@
 				  <td>PRO Light: ON<br><br>PV Display: Flashes ‘RUN’ code 3 times.</td>
 			  </tr>
 			  <tr>
+				  <td>CHECK</td>
+				  <td class="min"><span class="controllerButton">&nbsp;SET&nbsp;</span> x 3</td>
+				  <td>Check the parameters.</td>
+				  <td>Cycles through the program parameters.</td>
+			  </tr>			  
+			  <tr>
 				  <td>HALT</td>
 				  <td class="min"><span class="controllerButton">&nbsp;&nbsp;&or;&nbsp;&nbsp;</span></td>
 				  <td>Pauses program.</td>
@@ -90,10 +105,85 @@
 			  </tr>		
 			  <tr>
 				  <td>RESET</td>
-				  <td class="min">Power OFF -> ON.<br><br> Then <br><br><span class="controllerButton">&nbsp;&nbsp;&or;&nbsp;&nbsp;</span> and <span class="controllerButton">&nbsp;SET&nbsp;</span><br><br></td>
+				  <td class="min">Power OFF/ON.<br><br> Then <br><br><span class="controllerButton">&nbsp;&nbsp;&or;&nbsp;&nbsp;</span> and <span class="controllerButton">&nbsp;SET&nbsp;</span><br><br></td>
 				  <td>Stop running program.</td>
 				  <td>PRO Light: OFF<br><br>PV Display: Flashes ‘REST’ code 3 times.</td>
 			  </tr>				  
+			</table>
+		</div>
+	</div><br><br>
+</div>
+
+<div id="ref" class="hidden">
+	<b>Controller Interface</b><br><br>
+	<div class="outer">
+		<div class="inner">
+			<table>
+			  <tr>
+				  <th>Symbol</th>
+				  <th>Name</th>
+				  <th>Function</th>
+			  </tr>
+			  <tr>
+				  <td class="min">PV</td>
+				  <td>Measured process value (PV) display</td>
+				  <td>Displays the measured value from the input source or various character information such as parameter or error codes (Red)</td>
+			  </tr>
+			  <tr>
+				  <td class="min">SV</td>
+				  <td>Set value (SV) display</td>
+				  <td>Displays the target set value or the various parameter values during set‐up (Green)</td>
+			  </tr>
+			  <tr>
+				  <td class="min"><span class="controllerButton">&nbsp;SET&nbsp;</span></td>
+				  <td>Set key</td>
+				  <td>Used for calling up different parameters and storing set values</td>
+			  </tr>	
+			  <tr>
+				  <td class="min"><span class="controllerButton">&nbsp;A/M&nbsp;</span></td>
+				  <td>Auto/Manual Key</td>
+				  <td>Switches between Auto (PID) output mode and Manual output mode</td>
+			  </tr>	
+			  <tr>
+				  <td class="min"><span class="controllerButton">&nbsp;&nbsp;&lt;&nbsp;&nbsp;</span></td>
+				  <td>Shift Key</td>
+				  <td>Shifts digits when changing settings</td>
+			  </tr>				  
+			  <tr>
+				  <td class="min"><span class="controllerButton">&nbsp;&nbsp;&or;&nbsp;&nbsp;</span></td>
+				  <td>Down Key</td>
+				  <td>Decreases numeric value of selected digit <br> (-1000, -100, -10, -1)</td>
+			  </tr>		
+			  <tr>
+				  <td class="min"><span class="controllerButton">&nbsp;&nbsp;&and;&nbsp;&nbsp;</span></td>
+				  <td>Up Key</td>
+				  <td>Increase numeric value of selected digit <br> (+1000, +100, +10, +1)</td>
+			  </tr>		
+			  <tr>
+				  <td class="min">OUT1</td>
+				  <td>OUT1 Lamp</td>
+				  <td>Lights when OUT1 is active (Green)</td>
+			  </tr>		
+			  <tr>
+				  <td class="min">AL1</td>
+				  <td>Alarm 1 Lamp</td>
+				  <td>Lights when Alarm 1 is activated (Red)</td>
+			  </tr>		
+			  <tr>
+				  <td class="min">AL2</td>
+				  <td>Alarm 2 Lamp</td>
+				  <td>Lights when Alarm 2 is activated (Red)</td>
+			  </tr>		
+			  <tr>
+				  <td class="min">PRO</td>
+				  <td>Program Running lamp</td>
+				  <td>Lights when the program is running</td>
+			  </tr>		
+			  <tr>
+				  <td class="min">Out1%</td>
+				  <td>Out% bar‐graph display</td>
+				  <td>Output% is displayed on 10‐dot LED indicator</td>
+			  </tr>					  
 			</table>
 		</div>
 	</div><br><br>
@@ -118,30 +208,41 @@ function SelectValue(selection) {
  	case "powerup":
       document.getElementById("powerUpDisplay").style.display = "block";	  
       document.getElementById("runInstructions").style.display = "none";
-      document.getElementById("help").style.display = "none"; 	  	  
+      document.getElementById("help").style.display = "none"; 
+      document.getElementById("ref").style.display = "none";	  
       break;
 	case "bisque":
       document.getElementById("image").src = "bisque.png";
       document.getElementById("powerUpDisplay").style.display = "none";	  
       document.getElementById("runInstructions").style.display = "block";   
-      document.getElementById("help").style.display = "none"; 	  	  
+      document.getElementById("help").style.display = "none"; 	
+      document.getElementById("ref").style.display = "none";  	  
       break;
     case "glost":
       document.getElementById("image").src = "glost.png";
       document.getElementById("powerUpDisplay").style.display = "none";	  
       document.getElementById("runInstructions").style.display = "block";	 
-      document.getElementById("help").style.display = "none"; 	  	  
+      document.getElementById("help").style.display = "none"; 	
+      document.getElementById("ref").style.display = "none";  	  
       break;
     case "midfire":
       document.getElementById("image").src = "midfire.png";
       document.getElementById("powerUpDisplay").style.display = "none";	  
       document.getElementById("runInstructions").style.display = "block"; 	  	  
-      document.getElementById("help").style.display = "none"; 	  
+      document.getElementById("help").style.display = "none"; 
+      document.getElementById("ref").style.display = "none";	  
       break;
     case "keyOps":
       document.getElementById("powerUpDisplay").style.display = "none";	  
       document.getElementById("runInstructions").style.display = "none";
-      document.getElementById("help").style.display = "block"; 	  
+      document.getElementById("help").style.display = "block"; 	
+      document.getElementById("ref").style.display = "none";	 
+	  break;
+    case "interface":
+      document.getElementById("powerUpDisplay").style.display = "none";	  
+      document.getElementById("runInstructions").style.display = "none";
+      document.getElementById("help").style.display = "none"; 	
+      document.getElementById("ref").style.display = "block";		  
       break;	  
   }
 }
