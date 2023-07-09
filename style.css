@@ -33,8 +33,9 @@ th, td {
 tr:nth-child(even) {background-color: #fdfdfd;}
 
 td.min {
-    width: 25%;
+    width: 15%;
     white-space: nowrap;
+	font-weight: bold;
 }
 
 .mainFormats {
